@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Representation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-image: url("https://res.cloudinary.com/dleocbfvg/image/upload/v1741152420/bg2_uu438v.jpg ");
+            background-size: cover;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .bg {
+            background-color: #f9fbfe;
+        }
+        h1 {
+            color: #333;
+            font-size: 24px;
+        }
+
+        form {
+            margin: 20px 0;
+        }
+
+        input {
+            padding: 10px;
+            width: 70%;
+            border: 2px solid #333;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #218838;
+        }
+
+        #sign-container {
+            margin-top: 20px;
+        }
+
+        #sign-image {
+            width: 200px;
+            height: 200px;
+            border: 3px solid #333;
+            border-radius: 10px;
+            background: #fff;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class = "b">
+
+    <div class="container bg">
+        <h1>Sign Language Representation</h1>
+
+        <form action="/sign_representation" method="POST">
+            <label for="text_input">Enter Text:</label>
+            <br>
+            <input type="text" id="text_input" name="text_input" required placeholder="Enter a word">
+            <button type="submit">Show Signs</button>
+        </form>
+
+        {% if text %}
+            <h2>Entered Text: {{ text }}</h2>
+            <div id="sign-container">
+                <img id="sign-image" src="" alt="Sign Representation">
+            </div>
+        {% endif %}
+        <a href="{{ url_for('home')}}#sign-services"><button class ="button">Back</button></a>
+    </div>
+
+    <script>
+        let text = "{{ text|default('', true) }}".toUpperCase().split(" ");  // Split words
+        let index = 0, wordIndex = 0;
+        let signImage = document.getElementById("sign-image");
+        let wordDisplay = document.createElement("h2"); 
+        document.getElementById("sign-container").appendChild(wordDisplay); 
+    
+        // Emoji dictionary
+        const emojiDict = {
+           "HAPPY": "😊", "SAD": "😢", "LOVE": "❤️", "HELLO": "👋", "GOODBYE": "👋",
+        "THANKS": "🙏", "YES": "👍", "NO": "👎", "FRIEND": "🤝", "HELP": "🆘",
+        "PLEASE": "🙏", "SORRY": "😔", "GOOD": "👌", "BAD": "👎", "LAUGH": "😂",
+        "CRY": "😭", "WOW": "😮", "EAT": "🍽️", "DRINK": "🥤", "SLEEP": "😴",
+        "MONEY": "💰", "TIME": "⏳", "FIRE": "🔥", "COOL": "😎", "ANGRY": "😡",
+        "CONFUSED": "😕", "SICK": "🤒", "SUN": "☀️", "MOON": "🌙", "STAR": "⭐",
+        "PEACE": "✌️", "WORK": "💼", "STUDY": "📖", "MUSIC": "🎵", "DANCE": "💃",
+        "CAR": "🚗", "PLANE": "✈️", "HOME": "🏠", "BOOK": "📚", "PHONE": "📱",
+        "COMPUTER": "💻"
+        };
+
+    
+        function showNextLetter() {
+            if (wordIndex < text.length) {
+                let word = text[wordIndex]; 
+                wordDisplay.innerText = word; 
+    
+                if (emojiDict[word]) {
+                    wordDisplay.innerText += " " + emojiDict[word];  // Append emoji
+                }
+    
+                if (index < word.length) {
+                    let letter = word[index];
+                    if (/[A-Z]/.test(letter)) {  
+                        signImage.src = "{{ url_for('static', filename='signs/') }}" + letter + ".jpg";
+                    } else {
+                        signImage.src = "";  
+                    }
+                    index++;
+                    setTimeout(showNextLetter, 1000);  
+                } else {
+                    index = 0;
+                    wordIndex++;
+                    setTimeout(showNextLetter, 1500);  // Delay before next word
+                }
+            }
+        }
+    
+        showNextLetter();
+    </script>
+    
+
+</body>
+</html>

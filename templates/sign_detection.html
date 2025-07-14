@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Detection</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-image: url("https://res.cloudinary.com/djoxjfyy8/image/upload/v1741153567/bg3_j5ltel.jpg");
+            background-size: cover;
+        }
+        #video-container {
+            border: 3px solid black;
+            border-radius: 10px;
+            width: 50%;
+            margin: auto;
+        }
+        h1 {
+            margin-bottom: 10px;
+        }
+        .button {
+            border-radius: 15px;
+            border-width: 0px;
+            font-family: "Bree Serif";
+            font-weight: bold;
+            background-color: #E6E6FA;
+            width: 100px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sign Language Detection</h1>
+    
+    <div id="video-container">
+        <img src="{{ url_for('video_feed') }}" width="100%" />
+    </div>
+    <a href="{{ url_for('home')}}#sign-services"><button class ="button">Back</button></a>
+</body>
+</html>
