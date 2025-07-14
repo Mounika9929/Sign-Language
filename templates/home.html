@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Sign Language</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .nav-image {
+        height: 30px;
+        width: 140px;
+        }
+
+        .background {
+            background-color: #0C0521;
+        }
+
+        #navbar-head {
+            font-family: "Roboto";
+        }
+
+        #navbar-head1 {
+            font-family: "Roboto";
+            color: #000000;
+        }
+
+        #navbar-head2 {
+            color: #000000;
+            font-family: "Roboto";
+        }
+
+        #navbar-head3 {
+            color: #000000;
+            font-family: "Roboto";
+        }
+
+        #navbar-head4 {
+            font-family: "Roboto";
+            color: #000000;
+        }
+        #navbar-head5 {
+            font-family: "Roboto";
+            color: #000000;
+        }
+        .bg {
+            background-image: url("https://assets.ccbp.in/frontend/responsive-website/landing-section-bg.png");
+            background-size: cover;
+            height: 90vh;
+        }
+
+        .main-heading {
+            color: #ffffff;
+            font-size: 35px;
+            font-family: "Roboto";
+            font-weight: bold;
+        }
+
+        span {
+            color: #FFDDA9;
+        }
+
+        .paragraph {
+            color: #ffffff;
+            font-size: 18px;
+        }
+
+        .button {
+            border-width: 0px;
+            background-color: #FFDDA9;
+            color: #0C0521;
+            font-weight: 700;
+            font-family: "Roboto";
+            font-size: 12px;
+            border-radius: 15px;
+            width: 180px;
+            padding: 10px;
+        }
+
+        .services-card {
+            text-align: center;
+            border-radius: 10px;
+            background-color: #ffffff;
+        }
+
+        .card-image {
+            border-radius: 15px;
+        }
+
+        .services-card-head {
+            font-size: 25px;
+            font-family: "Bree Serif";
+            font-weight: bold;
+        }
+
+        .services-button {
+            border-radius: 15px;
+            border-width: 0px;
+            font-family: "Bree Serif";
+            font-weight: bold;
+            background-color: #E6E6FA;
+            width: 100px;
+            color: #000000;
+            font-size: 20px;
+            padding: 5px;
+        }
+        .sign-bg {
+            background-color: #e5f6ff;
+        }
+        footer {
+            background-image: url("https://assets.ccbp.in/frontend/responsive-website/landing-section-bg.png");
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .nav-image-logo {
+            height: 50px;
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand services-card-head" href="#">
+                <img src ="https://tse3.mm.bing.net/th?id=OIP.yNsIOf1RR_OsBOKTdk06zQAAAA&pid=Api&P=0&" class ="nav-image-logo mr-2"/>
+                HoloTalk
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ml-auto">
+                    <a class="nav-link active" id="navbar-head" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" id="navbar-head1" href="#sign-services">Features</a>
+                    <a class="nav-link" id="navbar-head3" href="#">About</a>
+                    <a class="nav-link" id="navbar-head4" href="#footer">Footer</a>
+                    <a href="{{ url_for('logout') }}" class="nav-link" id ="navbar-head5">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="bg d-flex flex-column justify-content-center">
+        <div class="text-center">
+            <h1 class="main-heading m-5">Sign Language</h1>
+            <p class="paragraph m-5">Sign languages are languages that use the visual-manual modality to convey meaning, instead of spoken words. Sign languages are expressed through manual .</p>
+            <a href="#sign-services">
+                <button class="button">Get Started</button>
+            </a>
+        </div>
+    </div>
+    <div id = "sign-services" class ="sign-bg">
+        <div class="container p-5">
+            <div class="row d-flex flex-row justify-content-center">
+                <div class="col-12 col-md-6 mb-3">
+                    <div class="services-card shadow p-3">
+                        <img src="https://res.cloudinary.com/dleocbfvg/image/upload/c_limit,h_250,w_250/bibbt586jniltovsbfgl" class="w-50 card-image">
+                        <h3 class="services-card-head p-2 mt-3">Sign Detection</h3>
+                        <a href="{{ url_for('sign_detection') }}">
+                            <button class ="services-button">Click</button></a>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 mb-5">
+                    <div class="services-card shadow p-3">
+                        <img src="https://img.freepik.com/free-vector/deaf-mute-people-concept-illustration_114360-23206.jpg?t=st=1741087631~exp=1741091231~hmac=112613ba6f2263c92f82074ef14fc4f74d14b9e7a293d0b53c2fdf930a643cf7" class="w-50 card-image" />
+                        <h1 class="services-card-head p-2 mt-3">Sign Representation</h1>
+                        <a href="{{ url_for('sign_representation')}}">
+                            <button class="services-button">Click</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id = "footer">
+        <footer>
+            <p>&copy; 2025 Holo Talk | All Rights Reserved</p>
+        </footer>
+    </div>
+</body>
+</html>
